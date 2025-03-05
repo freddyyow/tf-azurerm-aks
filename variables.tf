@@ -34,22 +34,6 @@ variable "kubernetes_version" {
 
 }
 
-variable "node_count" {
-
-}
-
-variable "min_count" {
-
-}
-
-variable "max_count" {
-
-}
-
-variable "vm_size" {
-
-}
-
 variable "tags" {
 
 }
@@ -77,15 +61,48 @@ variable "environment_map" {
 }
 
 variable "default_node_pool_settings" {
-  type = map(any)
-
-  # default = {
-  #   auto_scaling_enabled = True
-  #   node_count = <num>
-  #   min_count = <num>
-  #   max_count = <num>
-  #   vm_size = <num>
-  # }
+  type = map(object({
+    auto_scaling_enabled = optional(bool, true)
+    node_count           = number
+    min_count            = number
+    max_count            = number
+    node_labels          = optional(map(string))
+    os_sku               = optional(string, "Ubuntu")
+    vm_size              = string
+    #default = {}
+  }))
 }
 
+variable "linux_os_config" {
+  type = list(object({
+    swap_file_size_mb = optional(number)
+  }))
+}
+
+variable "node_pool_settings" {
+  type = map(object({
+    node_count           = number
+    min_count            = number
+    max_count            = number
+    auto_scaling_enabled = optional(bool, true)
+    os_type              = optional(string, "Linux")
+    priority             = optional(string, "Regular")
+    os_sku               = optional(string, "Ubuntu")
+    node_taints          = optional(list(string))
+    vm_size              = optional(string, "Standard_DS2_v2")
+  }))
+  default     = {}
+  description = "value"
+}
+
+variable "sysctl_config" {
+  type = list(object({
+    vm_max_map_count = optional(number)
+    vm_swappiness    = optional(number)
+  }))
+}
+
+variable "vnet_subnet_id" {
+
+}
 
