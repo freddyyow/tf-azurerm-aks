@@ -15,7 +15,7 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-
+  type = string
 }
 
 variable "private_cluster_enabled" {
@@ -31,7 +31,7 @@ variable "automatic_update_channel" {
 }
 
 variable "kubernetes_version" {
-
+  type = string
 }
 
 variable "tags" {
