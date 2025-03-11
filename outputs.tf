@@ -3,5 +3,5 @@ output "kubernetes_cluster_id" {
 }
 
 output "kubernetes_node_pool_id" {
-  value = azurerm_kubernetes_cluster_node_pool.pool[*].id
+  value = azurerm_kubernetes_cluster_node_pool.node_pool[*].id
 }
