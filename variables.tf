@@ -14,6 +14,13 @@ variable "location" {
   }
 }
 
+variable "create_resource_group" {
+  type = bool
+  nullable = false
+
+  default = true
+}
+
 variable "resource_group_name" {
   type = string
 }

@@ -1,3 +1,11 @@
+resource "azurerm_resource_group" "resource_group" {
+  count = var.create_resource_group ? 1 : 0
+
+
+  name = var.resource_group_name
+  location = var.location
+}
+
 resource "azurerm_kubernetes_cluster" "kubernetes_cluster" {
   for_each                   = var.default_node_pool_settings
   name                       = "${var.project_name}-${var.environment_map[var.target_environment]}"
@@ -45,7 +53,7 @@ resource "azurerm_kubernetes_cluster" "kubernetes_cluster" {
   }
 }
 
-resource "azurerm_kubernetes_cluster_node_pool" "pool" {
+resource "azurerm_kubernetes_cluster_node_pool" "node_pool" {
   for_each = var.node_pool_settings
 
   name                  = each.key
