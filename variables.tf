@@ -15,7 +15,7 @@ variable "location" {
 }
 
 variable "create_resource_group" {
-  type = bool
+  type     = bool
   nullable = false
 
   default = true
@@ -91,12 +91,12 @@ variable "node_pool_settings" {
     node_count           = number
     min_count            = number
     max_count            = number
+    vm_size              = string
     auto_scaling_enabled = optional(bool, true)
     os_type              = optional(string, "Linux")
     priority             = optional(string, "Regular")
     os_sku               = optional(string, "Ubuntu")
     node_taints          = optional(list(string))
-    vm_size              = optional(string, "Standard_DS2_v2")
   }))
   default     = {}
   description = "value"

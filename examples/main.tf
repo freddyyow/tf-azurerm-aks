@@ -9,6 +9,7 @@ resource "azurerm_resource_group" "rg" {
 module "aks_cluster" {
     source = "../../tf-azurerm-aks"
     default_node_pool_settings =
+    node_pool_settings = 
     tags = 
     kubernetes_version =
     vnet_subnet_id = 
