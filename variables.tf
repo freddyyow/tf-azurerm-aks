@@ -112,4 +112,3 @@ variable "sysctl_config" {
 variable "vnet_subnet_id" {
 
 }
-

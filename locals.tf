@@ -3,5 +3,6 @@ locals {
     DeployedWith = "Terraform",
     Owner        = "PlatformEngineering"
     Environment  = var.environment_map[var.target_environment]
+    Automation = "True"
   }
 }
